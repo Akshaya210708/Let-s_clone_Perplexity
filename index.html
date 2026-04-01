@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco | AI Search</title>
+    <meta name="description" content="Eco - Next generation minimalist search interface.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Marked for Markdown Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo-sm">eco</h1>
+                <button id="new-chat-btn" class="new-chat-btn">
+                    <i data-lucide="plus" class="icon-sm"></i>
+                    <span>New Chat</span>
+                </button>
+            </div>
+            
+            <nav class="history-list">
+                <div class="history-label">Recent</div>
+                <ul id="history-items">
+                    <!-- History items will be loaded here -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="app-container">
+            <!-- Scrollable Chat Area -->
+            <div id="chat-wrapper" class="chat-wrapper">
+                <div id="initial-view" class="initial-view">
+                    <header class="logo-container">
+                        <h1 class="logo">eco</h1>
+                    </header>
+                    
+                    <section class="suggestions-card" id="suggestions-section">
+                        <div class="card-header">
+                            <i data-lucide="monitor" class="icon-sm"></i>
+                            <span>Try Computer</span>
+                        </div>
+                        
+                        <nav class="category-tabs">
+                            <button class="tab active" data-category="life">
+                                <i data-lucide="layout-list" class="icon-xs"></i>
+                                Organize my life
+                            </button>
+                            <button class="tab" data-category="business">
+                                <i data-lucide="briefcase" class="icon-xs"></i>
+                                Build a business
+                            </button>
+                            <button class="tab" data-category="learn">
+                                <i data-lucide="lightbulb" class="icon-xs"></i>
+                                Help me learn
+                            </button>
+                            <button class="tab" data-category="prototype">
+                                <i data-lucide="code" class="icon-xs"></i>
+                                Create a prototype
+                            </button>
+                        </nav>
+
+                        <ul class="suggestion-list" id="suggestion-list">
+                            <li class="suggestion-item">Build a personal CRM to track my network</li>
+                            <li class="suggestion-item">Redesign my schedule around priorities</li>
+                            <li class="suggestion-item">Sort my tasks and prioritize this week</li>
+                            <li class="suggestion-item">Prepare me for an upcoming meeting</li>
+                            <li class="suggestion-item">Set up a weekly review system every Sunday</li>
+                        </ul>
+                    </section>
+                </div>
+
+                <!-- Messages will be appended here -->
+                <div id="chat-thread" class="chat-thread"></div>
+            </div>
+
+            <!-- Fixed Bottom Search Section -->
+            <div class="search-section">
+                <div class="search-box-wrapper">
+                    <div id="file-pill-container" class="file-pill-container hidden">
+                        <div class="file-pill">
+                            <i data-lucide="file-text" class="icon-xs"></i>
+                            <span id="file-name">filename.pdf</span>
+                            <button id="remove-file-btn" class="remove-file-btn">
+                                <i data-lucide="x" class="icon-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <textarea id="search-input" placeholder="Ask anything..." rows="1"></textarea>
+                        
+                        <div class="search-actions">
+                            <div class="actions-left">
+                                <button id="upload-trigger" class="action-btn" title="Upload PDF">
+                                    <i data-lucide="plus" class="icon-sm"></i>
+                                </button>
+                                <input type="file" id="file-input" accept=".pdf,.pptx,.ppt" class="hidden">
+                                <button class="pill-btn">
+                                    <i data-lucide="monitor" class="icon-sm"></i>
+                                    <span>Computer</span>
+                                    <i data-lucide="plus" class="icon-xs"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="actions-right">
+                                <div class="dropdown-trigger">
+                                    <span>Model</span>
+                                    <i data-lucide="chevron-down" class="icon-xs"></i>
+                                </div>
+                                <button class="action-btn" title="Voice Search">
+                                    <i data-lucide="mic" class="icon-sm"></i>
+                                </button>
+                                <button id="submit-btn" class="submit-btn">
+                                    <i data-lucide="arrow-right" class="icon-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
